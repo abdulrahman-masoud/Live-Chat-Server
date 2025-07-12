@@ -13,7 +13,7 @@ A real-time TCP-based chat application built with C# and .NET 8.0, featuring a m
 ## Project Structure
 
 ```
-dotnet/
+Live-Chat-Server/
 ├── ChatServer/
 │   ├── Program.cs          # TCP server implementation
 │   └── ChatServer.csproj   # Server project file
@@ -23,16 +23,18 @@ dotnet/
 └── README.md               # This file
 ```
 
-## Requirements
+## Prerequisites
 
 - .NET 8.0 SDK or later
 - Windows, Linux, or macOS
+- Terminal/Command Prompt access
 
 ## Installation & Setup
 
-1. **Navigate to the project directory**
+1. **Clone or download the project**
    ```bash
-   cd /home/shoyo/socket_programming/dotnet
+   git clone <repository-url>
+   cd Live-Chat-Server
    ```
 
 2. **Build the projects**
@@ -52,45 +54,45 @@ dotnet/
 
 ### Starting the Server
 
-1. Navigate to the server directory:
+1. **Open a terminal and navigate to the server directory:**
    ```bash
    cd ChatServer
    ```
 
-2. Run the server:
+2. **Run the server:**
    ```bash
    dotnet run
    ```
 
-3. You should see:
+3. **You should see:**
    ```
    Server started on port 5000...
    ```
 
 ### Connecting Clients
 
-1. Open a new terminal and navigate to the client directory:
+1. **Open a new terminal window/tab and navigate to the client directory:**
    ```bash
    cd ChatClient
    ```
 
-2. Run the client:
+2. **Run the client:**
    ```bash
    dotnet run
    ```
 
-3. Enter your username when prompted:
+3. **Enter your username when prompted:**
    ```
    Enter your name: YourName
    ```
 
-4. Start chatting! Type messages and press Enter to send.
+4. **Start chatting!** Type messages and press Enter to send.
 
-5. To disconnect, press Enter on an empty line.
+5. **To disconnect:** Press Enter on an empty line.
 
-### Multiple Clients
+### Running Multiple Clients
 
-Repeat the client connection steps in separate terminal windows to simulate multiple users.
+Open additional terminal windows and repeat the client connection steps to simulate multiple users chatting simultaneously.
 
 ## Architecture
 
@@ -165,7 +167,7 @@ dotnet build
 dotnet test
 ```
 
-### Running Multiple Instances
+### Running Multiple Instances for Testing
 ```bash
 # Terminal 1 - Start server
 cd ChatServer && dotnet run
@@ -180,10 +182,10 @@ cd ChatClient && dotnet run
 cd ChatClient && dotnet run
 ```
 
-### Configuration
-- **Server Port**: Default is 5000, can be modified in `ChatServer/Program.cs`
+### Configuration Options
+- **Server Port**: Default is 5000, modify in `ChatServer/Program.cs`
 - **Buffer Size**: Default is 1024 bytes for message buffers
-- **Server IP**: Currently set to `127.0.0.1` (localhost)
+- **Server Address**: Currently set to `127.0.0.1` (localhost) for local testing
 
 ## Code Structure
 
@@ -205,46 +207,10 @@ cd ChatClient && dotnet run
 - CancellationToken: Graceful shutdown
 ```
 
-## Troubleshooting
+## Getting Started
 
-**Connection Issues:**
-- Ensure the server is running before starting clients
-- Check firewall settings for port 5000
-- Verify no other applications are using port 5000
-- Use `netstat -tulpn | grep 5000` to check port usage
+1. **Download and install .NET 8.0 SDK** from [Microsoft's official website](https://dotnet.microsoft.com/download)
+2. **Clone this repository** or download the source code
+3. **Follow the Installation & Setup instructions** above
+4. **Start the server first**, then connect multiple clients to test the chat functionality
 
-**Build Issues:**
-- Ensure .NET 8.0 SDK is installed: `dotnet --version`
-- Try `dotnet clean` followed by `dotnet build`
-- Check for missing dependencies: `dotnet restore`
-
-**Runtime Issues:**
-- If client can't connect, verify server IP address (127.0.0.1)
-- Check console output for error messages
-- Ensure proper network connectivity
-
-## Performance Notes
-
-- **Scalability**: Can handle multiple concurrent connections
-- **Memory Usage**: ~1KB buffer per client connection
-- **Thread Usage**: One thread per client + main server thread
-- **Network**: TCP ensures reliable message delivery
-
-## License
-
-This project is for educational purposes demonstrating TCP socket programming with C# and .NET.
-
-## Related Projects
-
-This workspace also contains:
-- `../py/`: Python UDP socket implementation (simple echo server)
-- `../chat server repo/`: Alternative implementation
-
-## Contributing
-
-Feel free to fork and modify this code for learning purposes. Key areas for enhancement:
-- Add message encryption
-- Implement user authentication
-- Add private messaging
-- Create a GUI client
-- Add message history/logging
